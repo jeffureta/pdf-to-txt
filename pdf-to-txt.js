@@ -25,6 +25,26 @@ rl.question('Enter the PDF filename (including the extension): ', (filename) => 
     fs.writeFileSync(txtFilePath, extractedText);
 
     console.log('Text extracted and saved successfully as a TXT file!');
+
+    // Extract age, sex, dob, and patient ID from the extracted text
+    const regex = /Age\/Sex: (\d+)\/(\w+)\s+DOB: (\d{2}\/\d{2}\/\d{4})\s+Patient ID: (\d+)/;
+    const match = extractedText.match(regex);
+
+    if (match) {
+      const [, age, sex, dob, patientId] = match;
+
+      const reportInfo = {
+        age: age,
+        sex: sex,
+        dob: dob,
+        patientId: patientId,
+      };
+
+      console.log(JSON.stringify(reportInfo, null, 2));
+    } else {
+      console.log('No match found.');
+    }
+
     rl.close();
   });
 });
