@@ -1,12 +1,16 @@
-## PDF to TXT Extraction
+# PDF to TXT Extraction
 
-This script extracts text from a PDF file and saves it as a TXT file. It utilizes the Node.js `fs`, `pdf-parse`, and `readline` libraries to perform the extraction. The extracted text can be useful for various purposes, such as further analysis or processing of the textual content.
+This script extracts text from a PDF file and saves it as a TXT file. It utilizes the following dependencies:
 
-### Prerequisites
+- fs: Node.js built-in module for file system operations.
+- PDFParser: A library for parsing PDF files and extracting text content.
+- readline: A library for reading input from the command-line interface.
 
-- Node.js installed on your machine
+## Prerequisites
 
-### Installation
+- Node.js installed on your machine.
+
+## Installation
 
 1. Clone or download this repository to your local machine.
 
@@ -18,7 +22,7 @@ This script extracts text from a PDF file and saves it as a TXT file. It utilize
    npm install fs pdf-parse readline
    ```
 
-### Usage
+## Usage
 
 1. Run the script by executing the following command in the terminal or command prompt:
 
@@ -32,14 +36,18 @@ This script extracts text from a PDF file and saves it as a TXT file. It utilize
 
 4. Once the script finishes running, you will see a success message indicating that the text has been extracted and saved as a TXT file.
 
-### Extracted Information
+5. Additionally, the script extracts specific information from the extracted text, such as age, sex, date of birth, and patient ID. It saves this information as a JSON object in a file named "dataset.json" in the same directory as the script.
 
-The script also extracts specific information from the extracted text, such as age, sex, date of birth, and patient ID. It uses a regular expression pattern to match and extract this information. If the information is found, it will be displayed as a JSON object. If no match is found, a "No match found" message will be displayed.
+## Dependencies
 
-### License
+This project depends on the following Node.js packages:
 
-This project is licensed under the [MIT License](LICENSE).
+- fs: For file system operations.
+- pdf-parse: A library for parsing PDF files and extracting text content.
+- readline: A library for reading input from the command-line interface. 
 
----
+You can install these dependencies using npm by running the command:
 
-Please note that this `README.md` assumes you have already installed the necessary dependencies and provides instructions on how to use the script. Additionally, modify any other parts of the `README.md` file to match your specific project setup and requirements.
+```shell
+npm install fs pdf-parse readline
+```

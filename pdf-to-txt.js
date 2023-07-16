@@ -40,7 +40,10 @@ rl.question('Enter the PDF filename (including the extension): ', (filename) => 
         patientId: patientId,
       };
 
-      console.log(JSON.stringify(reportInfo, null, 2));
+      // Save reportInfo as JSON in dataset.json
+      const datasetFilePath = `${__dirname}/dataset.json`;
+      fs.writeFileSync(datasetFilePath, JSON.stringify(reportInfo, null, 2));
+      console.log('Report information saved to dataset.json.');
     } else {
       console.log('No match found.');
     }
