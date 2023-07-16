@@ -33,11 +33,25 @@ rl.question('Enter the PDF filename (including the extension): ', (filename) => 
     if (match) {
       const [, age, sex, dob, patientId] = match;
 
+      // Extract completeBloodCount data using regex
+      const cbcRegex = /COMPLETE BLOOD COUNT\s+([\w\s\n%()-]+)\n/;
+      const cbcMatch = extractedText.match(cbcRegex);
+
+      let completeBloodCount = {};
+      if (cbcMatch) {
+        const cbcData = cbcMatch[1].trim().split('\n');
+        cbcData.forEach((row) => {
+          const [, name, value] = row.split(/\s{2,}/);
+          completeBloodCount[name.trim()] = value.trim();
+        });
+      }
+
       const reportInfo = {
         age: age,
         sex: sex,
         dob: dob,
         patientId: patientId,
+        completeBloodCount: completeBloodCount,
       };
 
       // Save reportInfo as JSON in dataset.json

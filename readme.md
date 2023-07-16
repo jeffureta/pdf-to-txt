@@ -1,53 +1,34 @@
-# PDF to TXT Extraction
+# PDF to text
 
-This script extracts text from a PDF file and saves it as a TXT file. It utilizes the following dependencies:
-
-- fs: Node.js built-in module for file system operations.
-- PDFParser: A library for parsing PDF files and extracting text content.
-- readline: A library for reading input from the command-line interface.
-
-## Prerequisites
-
-- Node.js installed on your machine.
-
-## Installation
-
-1. Clone or download this repository to your local machine.
-
-2. Open a terminal or command prompt and navigate to the project directory.
-
-3. Install the required dependencies by running the following command:
-
-   ```shell
-   npm install fs pdf-parse readline
-   ```
-
-## Usage
-
-1. Run the script by executing the following command in the terminal or command prompt:
-
-   ```shell
-   node script.js
-   ```
-
-2. The script will prompt you to enter the PDF filename, including the extension.
-
-3. Provide the filename and press Enter. The script will read the specified PDF file, extract the text content, and save it as a new TXT file in the same directory. The TXT file will have the same name as the PDF file but with the .txt extension.
-
-4. Once the script finishes running, you will see a success message indicating that the text has been extracted and saved as a TXT file.
-
-5. Additionally, the script extracts specific information from the extracted text, such as age, sex, date of birth, and patient ID. It saves this information as a JSON object in a file named "dataset.json" in the same directory as the script.
+This is a Node.js script that allows you to extract specific information from a PDF report and save it as a JSON file. It utilizes the `pdf-parse` library to parse the PDF file and extract its text content.
 
 ## Dependencies
 
-This project depends on the following Node.js packages:
+The following dependencies are required to run this script:
 
-- fs: For file system operations.
-- pdf-parse: A library for parsing PDF files and extracting text content.
-- readline: A library for reading input from the command-line interface. 
+- fs
+- PDFParser
+- readline
 
-You can install these dependencies using npm by running the command:
+Make sure to install these dependencies using npm before running the script.
 
-```shell
+```bash
 npm install fs pdf-parse readline
 ```
+
+## Usage
+
+1. Clone or download the script and navigate to its directory in your terminal.
+2. Run the script using the following command:
+
+```bash
+node script.js
+```
+
+3. You will be prompted to enter the filename of the PDF report (including the extension).
+4. The script will read the PDF file, extract its text content, and save it as a TXT file in the same directory.
+5. The script will then extract the age, sex, date of birth, and patient ID from the extracted text using regular expressions.
+6. Next, it will extract the complete blood count data dynamically using a separate regular expression.
+7. The extracted information will be stored in a JavaScript object called `reportInfo`.
+8. The `reportInfo` object will be saved as a JSON file named `dataset.json` in the same directory.
+9. A success message will be displayed in the console indicating that the report information has been saved.
