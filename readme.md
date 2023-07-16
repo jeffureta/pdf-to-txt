@@ -1,12 +1,11 @@
 ```markdown
 # PDF to TXT Extraction
 
-This script extracts text from a PDF file and saves it as a TXT file. It uses the Node.js `fs` and `pdf-parse` libraries to perform the extraction. The extracted text can be useful for various purposes, such as further analysis or processing of the textual content.
+This script extracts text from a PDF file and saves it as a TXT file. It utilizes the Node.js `fs`, `pdf-parse`, and `readline` libraries to perform the extraction. The extracted text can be useful for various purposes, such as further analysis or processing of the textual content.
 
 ## Prerequisites
 
 - Node.js installed on your machine
-- PDF file you want to extract text from
 
 ## Installation
 
@@ -17,30 +16,32 @@ This script extracts text from a PDF file and saves it as a TXT file. It uses th
 3. Install the required dependencies by running the following command:
 
    ```
-   npm install pdf-parse
+   npm install fs pdf-parse readline
    ```
 
 ## Usage
 
-1. Specify the path to the PDF file you want to extract text from by updating the `pdfFilePath` variable in the `pdfToTxt.js` file. Make sure to provide the full file path, including the file extension.
-
-2. Specify the desired path and filename for the output TXT file by modifying the `txtFilePath` variable in the `pdfToTxt.js` file. Ensure that the directory exists and that you have write permissions.
-
-3. Run the script by executing the following command in the terminal or command prompt:
+1. Run the script by executing the following command in the terminal or command prompt:
 
    ```
-   node pdfToTxt.js
+   node script.js
    ```
 
-4. The script will read the specified PDF file, extract the text content, and save it as a new TXT file with the same name in the specified location.
+2. The script will prompt you to enter the filename of the PDF you want to extract text from, including the extension. Make sure the PDF file is in the same directory as the script or provide the full file path.
 
-5. Once the script finishes running, you will see a success message indicating that the text has been extracted and saved as a TXT file.
+3. The script will read the specified PDF file, extract the text content, and save it as a new TXT file in the same directory. The TXT file will have the same name as the PDF file but with the .txt extension.
 
-## Customization
+4. Once the script finishes running, you will see a success message indicating that the text has been extracted and saved as a TXT file.
 
-- If you want to extract text from a different PDF file, update the `pdfFilePath` variable in the `pdfToTxt.js` file with the correct file path.
+## Dependencies
 
-- To change the output TXT file path and filename, modify the `txtFilePath` variable in the `pdfToTxt.js` file.
+This project relies on the following dependencies:
+
+- [fs](https://nodejs.org/api/fs.html) - a Node.js module for interacting with the file system.
+- [pdf-parse](https://www.npmjs.com/package/pdf-parse) - a library for extracting text from PDF files.
+- [readline](https://nodejs.org/api/readline.html) - a Node.js module for reading input from the command line.
+
+These dependencies are automatically installed when you run `npm install`.
 
 ## License
 

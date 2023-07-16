@@ -1,26 +1,30 @@
 const fs = require('fs');
 const PDFParser = require('pdf-parse');
+const readline = require('readline');
 
-// Specify the PDF file path
-const pdfFilePath = '/Users/jeffureta/Downloads/file.pdf';
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
 
-// Specify the TXT file path for saving the extracted text
-const txtFilePath = '/Users/jeffureta/Downloads/text-output.pdf';
+rl.question('Enter the PDF filename (including the extension): ', (filename) => {
+  // Specify the PDF file path
+  const pdfFilePath = `${__dirname}/${filename}`;
 
-// Read the PDF file and extract the text
-const pdfData = fs.readFileSync(pdfFilePath);
+  // Specify the TXT file path for saving the extracted text
+  const txtFilePath = `${__dirname}/${filename.replace(/\.[^/.]+$/, '')}.txt`;
 
-PDFParser(pdfData).then(function (data) {
+  // Read the PDF file and extract the text
+  const pdfData = fs.readFileSync(pdfFilePath);
+
+  PDFParser(pdfData).then(function (data) {
     // Extracted text from the PDF
     const extractedText = data.text;
-  
+
     // Save the extracted text as a TXT file
-    const newTxtFilePath = txtFilePath.replace(/\.[^/.]+$/, '.txt');
-    fs.writeFileSync(newTxtFilePath, extractedText);
-  
+    fs.writeFileSync(txtFilePath, extractedText);
+
     console.log('Text extracted and saved successfully as a TXT file!');
+    rl.close();
   });
-
-
-
-
+});
